@@ -5,4 +5,4 @@
 
 后续会加入Python的代码实现并会以初学者的角度加入大量注释。
 
-GitHub的Markdown排版有点小问题，有道云的看起来舒服一点https://note.youdao.com/ynoteshare1/index.html?id=98ff87963320a4a6a663465fe4ab9bf6&type=notebook#/
+GitHub的Markdown排版有点小问题，[有道云](https://note.youdao.com/ynoteshare1/index.html?id=98ff87963320a4a6a663465fe4ab9bf6&type=notebook#/)的看起来舒服一点。
