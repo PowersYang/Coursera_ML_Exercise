@@ -60,28 +60,71 @@ submit.m - 提交你的作业至我们的服务器
 
 &#160;&#160;&#160;&#160;提供的ex6.m脚本将会指导你完成前半部分练习。
 
-&#160;&#160;&#160;&#160;
+### 1.1 样本数据集1
+&#160;&#160;&#160;&#160;我们将从一个2D示例数据集开始，该数据集可以由线性边界分隔。 脚本ex6.m将绘制训练数据（图1）。 在该数据集中，正例（用+表示）和负例（用o表示）的位置暗示了由间隙表示的自然分离。 但是，请注意在最左边有一个异常值正例+大约（0.1,4.1）。 作为本练习的一部分，你还将了解此异常值如何影响SVM决策边界。
 
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB49bd742d8b49bb6587a8632ed164c099?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB49bd742d8b49bb6587a8632ed164c099?method=download&shareKey=10fc7067262d2b19947e9236fc9d2e76" width="80%" /></center>
 <center><h6>Figure 1: Example Dataset 1</h6></center>
+
+&#160;&#160;&#160;&#160;在练习的这一部分中，你将尝试使用SVMs中不同的C参数值。非正式地说，C参数是一个正值，它控制了对错误分类的训练示例的惩罚。一个大的C参数告诉SVM尝试正确地对所有示例进行分类。 C起着类似于`$\frac{1}{λ}$`的作用，其中λ是我们之前用于逻辑回归的正则化参数。
+
+&#160;&#160;&#160;&#160;ex6.m的下一部分将使用我们已经给出的代码svmTrain.m运行SVM训练（C = 1）。
+当C = 1时，你应该发现SVM将决策边界置于两个数据集之间的间隙中，并对最左侧的数据点进行错误分类（图2）。
 
 <center><img src="https://note.youdao.com/yws/api/personal/file/WEBadf7d009fa7b128473fe868a54651292?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
 <center><h6>Figure 2: SVM Decision Boundary with C = 1 (Example Dataset 1)</h6></center>
 
+> **实现注意**：大多数SVM软件包（包括svmTrain.m）会自动为你添加额外的特征`$x_0 = 1$`，并自动负责学习截距项`$θ_0$`。 因此，在将训练数据传递给SVM软件时，无需自己添加此额外特征`$x_0 = 1$`。 特别是，在Octave / MATLAB中，你的代码应该使用训练样例`$x∈R^n$`（而不是`$x∈R^{n+1}$`）; 例如，在第一个示例中，数据集`$x∈R^2$`。
+
+&#160;&#160;&#160;&#160;你的任务是在这个数据集中尝试不同的C值。具体来说，你应该将脚本中的C值更改为C = 100并再次运行SVM训练。当C = 100时，你应该会发现SVM现在正确地分类了每个示例，但是它的决策边界似乎不是很好地拟合数据(图3)。
+
 <center><img src="https://note.youdao.com/yws/api/personal/file/WEB4f9b6c4c091a42a03a049e27c1e9c451?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
 <center><h6>Figure 3: SVM Decision Boundary with C = 100 (Example Dataset 1)
 </h6></center>
+
+### 1.2 高斯核支持向量机
+&#160;&#160;&#160;&#160;在本练习的这一部分中，你将使用SVM进行非线性分类。
+特别是，你将在不可线性分离的数据集上使用具有高斯内核的SVM。
+
+#### 1.2.1 高斯核
+&#160;&#160;&#160;&#160;为了利用支持向量机找到非线性决策边界，首先需要实现高斯核函数。你可以把高斯核想象成一个相似函数，它度量两个样本`$(x^{(i)},x^{(j)})$`之间的“距离”。高斯内核也由带宽参数，参数化σ，决定相似性度量以多快的速度减少（到0）为例进一步分开。
+
+&#160;&#160;&#160;&#160;你现在应该完成gaussianKernel.m中的代码来计算两个样本`$(x^{(i)},x^{(j)})$`之间的高斯核。高斯核的定义如下：
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBde4f3556cb59d87c4bb31d0620e68989?method=download&shareKey=6bc28d994f57cb5fc8ef380528429839" /></center>
+
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+
+
+
+
 
 <center><img src="https://note.youdao.com/yws/api/personal/file/WEBa2a10441c6cb30f282d813ca18db7376?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
 <center><h6>Figure 4: Example Dataset 2</h6></center>
