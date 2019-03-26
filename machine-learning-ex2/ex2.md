@@ -202,6 +202,6 @@
 ## 提交和评分
 &#160;&#160;&#160;&#160;完成作业的各个部分后，请务必使用提交系统将你的作业提交给我们的服务器。以下是对此练习的每个部分进行评分的细则。
 
-<img src="https://note.youdao.com/yws/api/personal/file/WEBc816c5a4b03a658f4af4cd05082f2a8d?method=download&shareKey=66f0f5656f8b301cb122c3544f3d43d6" width="80%"/>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBc816c5a4b03a658f4af4cd05082f2a8d?method=download&shareKey=66f0f5656f8b301cb122c3544f3d43d6" width="80%"/></center>
 
 &#160;&#160;&#160;&#160;你可以多次提交作业，但我们只考虑最高分。
