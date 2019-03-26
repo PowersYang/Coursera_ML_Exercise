@@ -4,31 +4,31 @@
 
 &#160;&#160;&#160;&#160;在本练习中，你将实现K均值聚类算法并将其应用于压缩图像。在第二部分中，你将使用主成分分析来寻找人脸图像的低维表示。在开始编程练习之前，我们强烈建议观看视频课程并完成相关主题的复习问题。
 
-&#160;&#160;&#160;&#160;要开始练习，您需要下载起始代码并将其内容解压缩到您希望完成练习的目录中。如果需要，请在开始本练习之前使用Octave/MATLAB中的cd命令更改到此目录。
+&#160;&#160;&#160;&#160;要开始练习，你需要下载起始代码并将其内容解压缩到你希望完成练习的目录中。如果需要，请在开始本练习之前使用Octave/MATLAB中的cd命令更改到此目录。
 
 &#160;&#160;&#160;&#160;你也可以在课程网站的“环境设置说明”中找到安装Octave/MATLAB的说明。
 
 ### 本练习中包含的文件
 
 ```
-ex7.m - Octave/MATLAB script for the first exercise on K-means
-ex7 pca.m - Octave/MATLAB script for the second exercise on PCA
-ex7data1.mat - Example Dataset for PCA
-ex7data2.mat - Example Dataset for K-means
-ex7faces.mat - Faces Dataset
-bird small.png - Example Image
-displayData.m - Displays 2D data stored in a matrix
-drawLine.m - Draws a line over an exsiting figure
-plotDataPoints.m - Initialization for K-means centroids
-plotProgresskMeans.m - Plots each step of K-means as it proceeds
-runkMeans.m - Runs the K-means algorithm
-submit.m - Submission script that sends your solutions to our servers
-[*] pca.m - Perform principal component analysis
-[*] projectData.m - Projects a data set into a lower dimensional space
-[*] recoverData.m - Recovers the original data from the projection
-[*] findClosestCentroids.m - Find closest centroids (used in K-means)
-[*] computeCentroids.m - Compute centroid means (used in K-means)
-[*] kMeansInitCentroids.m - Initialization for K-means centroids
+ex7.m - K-means上第一个练习的Octave/MATLAB脚本 
+ex7_pca.m - PCA上第二个练习的Octave/MATLAB脚本
+ex7data1.mat - PCA样本集
+ex7data2.mat - K-means样本集
+ex7faces.mat - 人脸数据集
+bird_small.png - 样本图片
+displayData.m - 展示存储在矩阵中的2D数据
+drawLine.m - 在现有的图形上画一条线
+plotDataPoints.m - 初始化k-means中心
+plotProgresskMeans.m - 绘制k-means的每一步
+runkMeans.m - 运行K-means算法
+submit.m - 提交脚本
+[*] pca.m - 进行主成分分析
+[*] projectData.m - 将数据集投射到较低维度空间
+[*] recoverData.m - 从投影中恢复原始数据
+[*] findClosestCentroids.m - 寻找最近的聚类中心(在K-means中使用)
+[*] computeCentroids.m - 计算聚类中心平均值(K-means中使用)
+[*] kMeansInitCentroids.m - 初始化k-means聚类中心
 
 * 表示必须完成的文件
 ```
@@ -167,39 +167,103 @@ the image).</h6></center>
 
 ---
 
-&#160;&#160;&#160;&#160;
+## 2、主成分分析
+&#160;&#160;&#160;&#160;在本练习中，你将使用主成分分析(PCA)来执行降维。你将首先使用一个示例2D数据集进行实验，以直观了解PCA如何工作，然后在5000个人脸图像数据集的更大数据集上使用它。
 
-&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;提供的ex7_pca.m脚本会指导你完成前半部分练习。
 
-&#160;&#160;&#160;&#160;
+### 2.1 样本集
+&#160;&#160;&#160;&#160;为了帮助你了解PCA的工作原理，你将首先从一个2D数据集开始，该数据集具有一个大变化方向和一个较小变化方向。 脚本ex7_pca.m将绘制训练数据（图4）。 在本练习的这一部分中，你将可视化使用PCA将数据从2D减少到1D时发生的情况。实际上，你可能希望将数据从256维减少到50维; 但是在这个例子中使用低维数据可以让我们更好地可视化算法。
 
-&#160;&#160;&#160;&#160;
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB41e5d40ea2b3a0511b70651d1ca54eb1?method=download&shareKey=0d11cae13636cbbf43c831fdac868a89" /></center>
+<center><h6>Figure 4: Example Dataset 1</h6></center>
 
-&#160;&#160;&#160;&#160;
+### 2.2 实现PCA
+&#160;&#160;&#160;&#160;在本部分练习中，你将实现PCA。PCA由两个计算步骤组成：首先，计算数据的协方差矩阵。然后，使用Octave/MATLAB的SVD函数计算特征向量`$U_1, U_2,…,U_n$`。这些将与数据变化的主要组成部分相对应。
 
-&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;在使用PCA之前，首先通过从数据集中减去每个要素的平均值来标准化数据，然后缩放每个维度以使它们处于相同的范围内，这一点很重要。在提供的脚本ex7_pca.m中，已使用featureNormalize函数为你执行此规范化。
 
-&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;规范化数据后，你可以运行PCA来计算主要组件。 你的任务是完成pca.m中的代码以计算数据集的主要组件。 首先，你应该计算数据的协方差矩阵，其由下式给出：
 
-&#160;&#160;&#160;&#160;
+```math
+    Σ = \frac{1}{m}X^TX
+```
 
-&#160;&#160;&#160;&#160;
+其中X是数据矩阵，其中包含行中的样本，m是样本的数量。 注意，Σ是n×n矩阵而不是求和运算符。
 
-&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;计算协方差矩阵后，可以在其上运行SVD来计算主成分。在Octave/MATLAB中，你可以使用以下命令运行SVD：[U, S, V] = svd(Sigma)，其中U将包含主成分，S将包含对角矩阵。
 
-&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;完成pca.m后，ex7_pca.m脚本将在示例数据集上运行PCA并绘制找到的相应主要组件（图5）。 该脚本还将输出找到的顶部主成分（特征向量），你应该会看到输出约为[-0.707 -0.707]。 （Octave/MATLAB可能会输出负数，因为U1和-U1对于第一个主成分是同等有效的选择。）
 
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
-
-&#160;&#160;&#160;&#160;
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa4260e222164e81288755925089bce73?method=download&shareKey=be421439a3040d65ada2efe065746be7" /></center>
+<center><h6>Figure 5: Computed eigenvectors of the dataset
+</h6></center>
 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
+
+### 2.3 使用PCA降维
+&#160;&#160;&#160;&#160;在计算主成分之后，你可以通过将每个样本投影到较低维度空间`$x^{(i)}→z^{(i)}$`（例如，将数据从2D投影到1D）来使用它们来减少数据集的要素维度。 在本练习的这一部分中，你将使用PCA返回的特征向量，并将示例数据集投影到一维空间中。
+
+&#160;&#160;&#160;&#160;实际上，如果你使用的是学习算法，如线性回归或神经网络，你现在可以使用投影数据而不是原始数据。 通过使用投影数据，你可以更快地训练模型，因为输入中的维度较少。
+
+#### 2.3.1 将数据投影到主要组件上
+&#160;&#160;&#160;&#160;你现在应该在projectData.m中完成代码。 具体来说，你将获得一个数据集X，主要组件U和要减少到K的所需维数。你应该将X中的每个示例投影到U中的顶部K组件上。请注意，U中的前K个组件是 通过U的前K列，即U_reduce = U(:, 1:K)。
+
+&#160;&#160;&#160;&#160;完成projectData.m中的代码后，ex7_pca.m会将第一个示例投影到第一个维度，你应该看到大约1.481的值（如果得到`$-U_1$`而不是`$U_1$`，则可能看到-1.481）。
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
+
+#### 2.3.2 重建数据的近似值
+&#160;&#160;&#160;&#160;将数据投影到较低维空间后，你可以通过将数据投影回原始高维空间来近似恢复数据。 你的任务是完成recoverData.m以将Z中的每个样本投影回原始空间并在X_rec中返回恢复的近似值。
+
+&#160;&#160;&#160;&#160;完成recoverData.m中的代码后，ex7_pca.m将恢复第一个样本的近似值，你应该看到值约为[-1.047 -1.047]。
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
+
+#### 2.3.3 可视化投影
+&#160;&#160;&#160;&#160;在完成projectData和recoverData之后，ex7_pca.m现在将执行投影和近似重建，以显示投影如何影响数据。 在图6中，原始数据点用蓝色圆圈表示，而投影数据点用红色圆圈表示。投影有效地仅保留`$U_1$`给出的方向的信息。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBffbd03c976253d355b8255a8615cb0c8?method=download&shareKey=8a9a7c0b2460b05703e34aca1f60677e" /></center>
+<center><h6>Figure 6: The normalized and projected data after PCA.</h6></center>
+
+### 2.4 面部图像数据集
+&#160;&#160;&#160;&#160;在本练习的这一部分中，你将在面部图像上运行PCA，以了解它如何在实践中用于降低尺寸。 数据集ex7faces.mat包含面部图像的数据集X，每个32×32为灰度。 X的每一行对应于一个面部图像（长度为1024的行向量）。 ex7_pca.m的下一步将加载并可视化这些面部图像中的前100个（图7）。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB6e942241e565ce33cb9d599d869457d9?method=download&shareKey=6bc483f672a2f557020d1faeeb7ca346" /></center>
+<center><h6>Figure 7: Faces dataset</h6></center>
+
+#### 2.4.1 基于面部图像的PCA
+&#160;&#160;&#160;&#160;要在面部数据集上运行PCA，我们首先通过从数据矩阵X中减去每个要素的平均值来规范化数据集。脚本ex7_pca.m将为你执行此操作，然后运行你的PCA代码。 运行PCA后，你将获得数据集的主要组件。请注意，U（每行）中的每个主成分都是长度为n的向量（对于面数据集，n = 1024）。事实证明，我们可以通过将每个主要组件重新塑造成与原始数据集中的像素对应的32×32矩阵来可视化这些主要组件。 脚本ex7_pca.m显示描述最大变化的前36个主要组件（图8）。 如果需要，还可以更改代码以显示更多主要组件，以了解它们如何捕获越来越多的详细信息。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB6cdaf1965e355cfdad524cec24f9901a?method=download&shareKey=ff577c3e7c5d865438a991eb03faf863" /></center>
+<center><h6>Figure 8: Principal components on the face dataset</h6></center>
+
+#### 2.4.2 降维
+&#160;&#160;&#160;&#160;现在你已经计算了面部数据集的主要组件，你可以使用它来减少面部数据集的维度。这允许你使用较小输入尺寸（例如，100维）的学习算法而不是原始1024维度。 这有助于加快学习算法的速度。
+
+&#160;&#160;&#160;&#160;ex7_pca.m的下一部分将仅将面部数据集投影到前100个主要组件上。具体地说，现在通过向量`$z^{(i)}∈R^{100}$`描述每个面部图像。
+
+&#160;&#160;&#160;&#160;要了解降维中丢失的内容，可以仅使用投影数据集恢复数据。在ex7_pca.m中，执行数据的近似恢复，并且原始和投影的面部图像并排显示（图9）。从重建中，你可以观察到面部的一般结构和外观被保留，同时细节丢失。这是数据集大小的显着减少（超过10倍），可以帮助显着加快你的学习算法。例如，如果你正在训练神经网络来执行人物识别（给定面部图片，预测人物的身份），则可以使用仅100维度的尺寸缩减输入而不是原始像素。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdb7ff4528bc69e258861fe6b19867ea8?method=download&shareKey=bdab83bfee223b2239a85ad0b805ab5e" /></center>
+<center><h6>Figure 9: Original images of faces and ones reconstructed from only the top
+100 principal components.</h6></center>
+
+### 2.5 可选练习（不评分）：可视化PCA
+&#160;&#160;&#160;&#160;在前面的K-means图像压缩练习中，你在三维RGB空间中使用了K-means算法。在ex7_pca.m脚本的最后一部分中，我们提供了使用scatter3函数可视化此3D空间中最终像素分配的代码。 每个数据点都根据其分配的群集着色。 你可以在图上拖动鼠标以旋转并以3维方式检查此数据。
+
+&#160;&#160;&#160;&#160;事实证明，在3维或更大维度上可视化数据集可能很麻烦。因此，通常希望仅以丢失一些信息为代价以2D显示数据。 在实践中，PCA通常用于减少数据的维度以用于可视化目的。 在ex7_pca.m的下一部分中，脚本将PCA的实现应用于三维数据，将其缩小为2维，并在2D散点图中显示结果。 可以将PCA投影视为旋转，选择最大化数据传播的视图，这通常对应于“最佳”视图
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBeee138a91fab2782346a04eea77a35f2?method=download&shareKey=060635ab7964e874e1879d9ac5b18a55" /></center>
+<center><h6>Figure 10: Original data in 3D</h6></center>
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB49e281494bec01a1a079bd18644c178f?method=download&shareKey=eeb2a3ccf68c873b836fc7a559f72d86" /></center>
+<center><h6>Figure 11: 2D visualization produced using PCA</h6></center>
+
+## 提交和评分
+&#160;&#160;&#160;&#160;完成作业的各个部分后，请务必使用提交系统将你的作业提交给我们的服务器。以下是对此练习的每个部分进行评分的细则。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB7cbf19f051025cb78c36b2be307e46be?method=download&shareKey=b61bba683dd38f71c3da24a88d331dc1" /></center>
+
+&#160;&#160;&#160;&#160;你可以多次提交作业，但我们只考虑最高分。
  
