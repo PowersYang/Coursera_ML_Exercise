@@ -1,0 +1,139 @@
+# 程序设计练习8：异常检测和推荐系统
+
+## 介绍
+
+&#160;&#160;&#160;&#160;在本练习中，你将实现异常检测算法，并将其应用于检测网络中的故障服务器。在第二部分中，你将使用协同过滤来构建电影推荐系统。在开始编程练习之前，我们强烈建议观看视频课程并完成相关主题的复习问题。
+
+&#160;&#160;&#160;&#160;要开始练习，你需要下载起始代码并将其内容解压缩到你希望完成练习的目录中。如果需要，请在开始本练习之前使用Octave/MATLAB中的cd命令更改到此目录。
+
+&#160;&#160;&#160;&#160;你也可以在课程网站的“环境设置说明”中找到安装Octave/MATLAB的说明。
+
+### 本练习中包含的文件
+
+```
+ex8.m - Octave/MATLAB script for first part of exercise
+ex8 cofi.m - Octave/MATLAB script for second part of exercise
+ex8data1.mat - First example Dataset for anomaly detection
+ex8data2.mat - Second example Dataset for anomaly detection
+ex8 movies.mat - Movie Review Dataset
+ex8 movieParams.mat - Parameters provided for debugging
+multivariateGaussian.m - Computes the probability density function
+for a Gaussian distribution
+visualizeFit.m - 2D plot of a Gaussian distribution and a dataset
+checkCostFunction.m - Gradient checking for collaborative filtering
+computeNumericalGradient.m - Numerically compute gradients
+fmincg.m - Function minimization routine (similar to fminunc)
+loadMovieList.m - Loads the list of movies into a cell-array
+movie ids.txt - List of movies
+normalizeRatings.m - Mean normalization for collaborative filtering
+submit.m - Submission script that sends your solutions to our servers
+[*] estimateGaussian.m - Estimate the parameters of a Gaussian distribution
+with a diagonal covariance matrix
+[*] selectThreshold.m - Find a threshold for anomaly detection
+[*] cofiCostFunc.m - Implement the cost function for collaborative filtering
+
+* 表示必须完成的文件
+```
+
+&#160;&#160;&#160;&#160;在整个练习的第一部分（异常检测）中，你将使用脚本ex8.m。对于协同过滤的第二部分，你将使用ex8_cofi.m。这些脚本为问题设置数据集，并调用你要编写的函数。 你只需按照此作业中的说明修改其他文件中的函数。
+
+### 在哪里寻求帮助
+
+&#160;&#160;&#160;&#160;本课程的练习使用非常适合数值计算的高级编程语言Octave或MATLAB。如果你没有安装Octave或MATLAB，请参阅课程网站上“环境设置说明”中的安装说明。
+
+&#160;&#160;&#160;&#160;在Octave/MATLAB命令行中输入help紧跟函数名称会显示内建的函数说明。比如输入help plot会显示绘图函数的帮助信息。更多Octave和MATLAB的函数说明请在[Octave官网](https://octave.org/doc/interpreter/)和[MATLAB官网](https://www.mathworks.com/help/matlab/?refresh=true)查阅。
+
+&#160;&#160;&#160;&#160;我们也非常鼓励使用在线讨论与其他学生讨论练习。但是，不要查看任何源代码或与他人共享源代码。
+
+------
+
+## 1、异常检测
+
+&#160;&#160;&#160;&#160;在本练习中，你将实现一个异常检测算法来检测服务器计算机中的异常行为。这些特性度量每个服务器的吞吐量（mb/s）和响应延迟（ms）。在你的服务器运行时，你收集了m = 307个关于它们行为的样本，因此有一个未标记的数据集`$\{x^{(1)},…,x^{(m)}\}$`。你怀疑这些样本中的绝大多数都是正常运行的服务器的“正常”(非异常)样本，但是也可能有一些服务器在这个数据集中异常运行的样本。
+
+&#160;&#160;&#160;&#160;你将使用高斯模型来检测数据集中的异常样本。 你将首先开始使用2D数据集，以便可视化算法正在执行的操作。 在该数据集上，你将拟合高斯分布，然后找到概率非常低的值，因此可以认为是异常。之后，你将异常检测算法应用于具有多个维度的较大数据集。你将使用ex8.m进行这部分练习。
+
+&#160;&#160;&#160;&#160;ex8.m的第一部分将可视化数据集，如图1所示。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBecc4040f7befb358ea57dbb46e5e02b1?method=download&shareKey=6b93144164cdd689b598a0b3c6e40e5f" /></center>
+<center><h6>Figure 1: The first dataset.</h6></center>
+
+### 1.1 高斯分布
+&#160;&#160;&#160;&#160;要执行异常检测，首先需要根据数据的分布匹配模型。
+
+&#160;&#160;&#160;&#160;给定训练集`$\{x^{(1)},...,x^{(m)}\}$`（其中`$x^{(i)}∈R^n$`），你想估计每个特征`$x_i$`的高斯分布。 对于每个特征 i=1,,,n，你需要找到适合第i维`$\{x^{(1)}_i,...,x^{(m)}_i\}$`（每个样本的第i维）的数据的参数`$μ_i$`和`$σ^2_i$`。
+
+&#160;&#160;&#160;&#160;给出的高斯分布如下：
+
+```math
+    p(x;μ,σ^2)=\frac{1}{\sqrt{2πσ^2}}e^{-\frac{(x-μ)^2}{2σ^2}}
+```
+其中μ是平均值，`$σ^2$`控制方差。
+
+### 1.2 估计高斯分布的参数
+&#160;&#160;&#160;&#160;你可以使用下面的方程估计第i个特征的参数`$(μ_i,σ^2_i)$`。估计平均值你可以使用：
+
+```math
+    μ_i = \frac{1}{m}\sum^m_{j=1}x^{(j)}_i,
+```
+
+估计方差可以使用：
+
+```math
+    σ^2_i = \frac{1}{m}\sum^m_{j=1}(x^{(j)_i - μ_i})^2.
+```
+
+&#160;&#160;&#160;&#160;你的任务是完成estimateGaussian.m中的代码。这个函数以数据矩阵X为输入，应该输出一个n维向量mu，其包含所有n个特征的均值；另一个n维向量sigma2包含所有特征的方差。你可以在每个特征和每个训练样本上使用for循环来实现这一点（尽管矢量化实现可能更有效；如果你愿意，可以随意使用矢量化实现）。 请注意，在Octave / MATLAB中，当计算`$σ^2_i$`时，var函数将（默认情况下）使用`$\frac{1}{m-1}$`而不是`$\frac{1}{m}$`。
+
+&#160;&#160;&#160;&#160;完成estimateGaussian.m中的代码后，ex8.m的下一部分将可视化拟合高斯分布的轮廓。你应该得到类似于图2的图。从你的图中，你可以看到大多数样本都位于具有最高概率的区域中，而异常样本位于概率较低的区域中。
+
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB29416fd9d446743c47f50626d36f6bef?method=download&shareKey=9ed038dc3548bb3feb04f21802248097" /></center>
+<center><h6>Figure 2: The Gaussian distribution contours of the distribution fit to the
+dataset.</h6></center>
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
+
+### 1.3 选择阈值ε
+&#160;&#160;&#160;&#160;现在你已经估计了高斯参数，你可以研究哪些样本在给定此分布时具有非常高的概率，哪些样本具有非常低的概率。低概率样本更可能是我们数据集中的异常。 确定哪些样本是异常的一种方法是基于交叉验证集选择阈值。 在本练习的这一部分中，你将实现一个算法，使用交叉验证集上的`$F_1$`分数选择阈值ε。
+
+&#160;&#160;&#160;&#160;你现在应该完成selectThreshold.m中的代码。在此我们将使用一个交叉验证集`$\{(x^{(1)}_{cv},y^{(1)}_{cv}),...,(x^{(m_{cv})}_{cv},y^{(m_{cv})}_{cv})\}$`，其中标签y = 1对应于异常样本，y = 0对应于正常示样本。对于每个交叉验证样本，我们计算`$p(x^{i}_{cv})$`。所有这些概率的向量`$p(x^{(1)}_{cv}),...,p(x^{(m_{cv})}_{cv})$`会在向量pval中传递给selectThreshold.m函数。相应的标签`$y^{(1)}_{cv},...,y^{(m_{cv})}_{cv}$`会在向量yval中传递给selectThreshold.m函数。
+
+&#160;&#160;&#160;&#160;函数selectThreshold.m应该返回两个值；第一个是选定的阈值ε。如果样本x具有低概率p(x)<ε，则认为它是异常的。该函数还应该返回`$F_1$`分数，该分数告诉你在给定某个阈值时你在查找真实异常方面的表现如何。对于许多不同的ε值，你将通过计算当前阈值正确和错误分类的样本数来计算得到的`$F_1$`分数。
+
+&#160;&#160;&#160;&#160;`$F_1$`分数使用精度（prec）和召回率（rec）计算：
+
+```math
+    F_1 = \frac{2·prec·rec}{prec+rec},
+```
+
+计算prec和rec：
+```math
+    prec = \frac{tp}{tp+fp}
+    
+    rec = \frac{tp}{tp+fn}
+```
+
+其中：
+> * tp是真阳性的数量：真实值标注这是一个异常，我们的算法正确地将其归类为异常。
+> * fp是假阳性的数量：真实值标注它不是异常，但我们的算法错误地将其归类为异常。
+> * fn是假阴性的数量：真实值标注它是一个异常，但我们的算法错误地将其归类为不是异常的。
+
+&#160;&#160;&#160;&#160;在提供的代码selectThreshold.m中，已经存在一个循环，它将尝试许多不同的ε值并根据`$F_1$`分数选择最佳ε。
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==这部分练习不需要做任何提交==*
