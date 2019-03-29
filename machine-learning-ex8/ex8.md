@@ -11,26 +11,24 @@
 ### 本练习中包含的文件
 
 ```
-ex8.m - Octave/MATLAB script for first part of exercise
-ex8 cofi.m - Octave/MATLAB script for second part of exercise
-ex8data1.mat - First example Dataset for anomaly detection
-ex8data2.mat - Second example Dataset for anomaly detection
-ex8 movies.mat - Movie Review Dataset
-ex8 movieParams.mat - Parameters provided for debugging
-multivariateGaussian.m - Computes the probability density function
-for a Gaussian distribution
-visualizeFit.m - 2D plot of a Gaussian distribution and a dataset
-checkCostFunction.m - Gradient checking for collaborative filtering
-computeNumericalGradient.m - Numerically compute gradients
-fmincg.m - Function minimization routine (similar to fminunc)
-loadMovieList.m - Loads the list of movies into a cell-array
-movie ids.txt - List of movies
-normalizeRatings.m - Mean normalization for collaborative filtering
-submit.m - Submission script that sends your solutions to our servers
-[*] estimateGaussian.m - Estimate the parameters of a Gaussian distribution
-with a diagonal covariance matrix
-[*] selectThreshold.m - Find a threshold for anomaly detection
-[*] cofiCostFunc.m - Implement the cost function for collaborative filtering
+ex8.m - 用于第一部分练习的Octave / MATLAB脚本
+ex8_cofi.m - 用于第二部分练习的Octave / MATLAB脚本
+ex8data1.mat - 用于异常检测的第一个样本集
+ex8data2.mat - 用于异常检测的第二个样本集
+ex8_movies.mat - 电影评论数据集
+ex8_movieParams.mat - 提供用于调试的参数
+multivariateGaussian.m - 计算高斯分布的概率密度函数
+visualizeFit.m - 高斯分布和数据集的2D图
+checkCostFunction.m - 渐变检查协同过滤
+computeNumericalGradient.m - 以数字方式计算梯度
+fmincg.m - 函数最小化例程（类似于fminunc）
+loadMovieList.m - 将电影列表加载到单元格数组中
+movie_ids.txt - 电影列表
+normalizeRatings.m - 协同过滤的均值归一化
+submit.m - 提交脚本
+[*] estimateGaussian.m - 用对角协方差矩阵估计高斯分布的参数
+[*] selectThreshold.m - 找到异常检测的阈值
+[*] cofiCostFunc.m - 实现协同过滤的成本函数
 
 * 表示必须完成的文件
 ```
