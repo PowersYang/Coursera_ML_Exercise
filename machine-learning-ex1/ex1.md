@@ -1,7 +1,5 @@
 # 程序设计练习1: 线性回归
 
-机器学习
-
 ## 介绍
 
 &#160;&#160;&#160;&#160;在本练习中，你将实现线性回归，并明确它对数据的作用。在开始这个练习之前，我们强烈建议你观看视频讲座并完成相关主题的复习问题。
@@ -142,7 +140,7 @@ submit.m - 将你的答案发送到我们服务器的提交脚本
 
 #### 2.2.2 实现
 
-在ex1.m中我们已经建立了线性回归的数据。接下来，我们向数据中添加第一列（全部为1）以适应θ0截距项。我们还将初始化参数，使为θ为0，学习率为0.01。
+在ex1.m中我们已经建立了线性回归的数据。接下来，我们向数据中添加第一列（全部为1）以适应`$θ_0$`截距项。我们还将初始化参数，使为θ为0，学习率为0.01。
 
 ```
     X = [ones(m, 1), data(:,1)]; % Add a column of ones to x
@@ -170,7 +168,7 @@ submit.m - 将你的答案发送到我们服务器的提交脚本
 
 &#160;&#160;&#160;&#160;当你完成后，ex1.m将使用最终参数来绘制线性拟合。结果应该如图2所示:
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB3fd0e41b90ad63f00c3744e921f98e3d?method=download&shareKey=560e9f348f8aee2192a31d7008e657fd" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB3fd0e41b90ad63f00c3744e921f98e3d?method=download&shareKey=560e9f348f8aee2192a31d7008e657fd" /></center>
 <center><h6>Figure 2: Training data with linear regression fit</h6></center>
 
 &#160;&#160;&#160;&#160;最终值θ也将用来预测35000和70000人的利润。请注意ex1.m中以下行使用矩阵乘法而不是显式求和或循环来计算预测。这是Octave/MATLAB中代码向量化的一个例子。
