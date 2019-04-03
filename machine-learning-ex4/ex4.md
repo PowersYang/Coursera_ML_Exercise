@@ -55,7 +55,7 @@
 ### 1.2 模型表示
 &#160;&#160;&#160;&#160;我们的神经网络如图2所示，总共有3层——一个输入层、一个隐藏层和一个输出层。回想一下，我们的输入是数字图像的像素值。由于图像大小20×20，因此给了我们400个输入层单位（不包括额外的偏差项）。和之前一样，训练数据将被加载到变量X和y中。
 
-&#160;&#160;&#160;&#160;我们 已经为你提供了我们训练的一组神经网络参数（`$θ^{(1)}$`,`$θ^{(2)}$`）。他们存在ex4weights.mat中并可以使用y ex4.m加载到Theta1和Theta2中。参数具有针对神经网络的大小，其在第二层中具有25个单元并且具有10个输出单元（对应于10个数字类）。
+&#160;&#160;&#160;&#160;我们已经为你提供了我们训练的一组神经网络参数（`$θ^{(1)}$`,`$θ^{(2)}$`）。他们存在ex4weights.mat中并可以使用ex4.m加载到Theta1和Theta2中。参数具有针对神经网络的大小，其在第二层中具有25个单元并且具有10个输出单元（对应于10个数字类）。
 
 ```
 % Load saved matrices from file
@@ -65,14 +65,14 @@ load('ex3weights.mat');
 % Theta1 has size 25 x 401
 % Theta2 has size 10 x 26
 ```
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdba65583247ba093a8be6c3a07093f6c?method=download&shareKey=2d6cedef95e5129f3c30915cc19c322f" width="60%"/></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdba65583247ba093a8be6c3a07093f6c?method=download&shareKey=2d6cedef95e5129f3c30915cc19c322f" /></center>
 <center><h6>Figure 2: Neural network model</h6></center>
 
 ### 1.3 前馈和代价函数
 &#160;&#160;&#160;&#160;现在你将实现神经网络的代价函数和梯度。首先完成nnCostFunction.m中的代码返回代价。
 
 &#160;&#160;&#160;&#160;回想一下神经网络的代价（没有正则化）
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBd26f03a2d260deddadb07c80bdac3bf7?method=download&shareKey=bfd556d0f60e881f86dcca50b6d72c64" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBd26f03a2d260deddadb07c80bdac3bf7?method=download&shareKey=bfd556d0f60e881f86dcca50b6d72c64" /></center>
 
 其中`$h_θ(x^{(i)})$`如图2所示计算，K=10是可能标签的总数。注意，`$h_θ(x^{(i)})_k$` = `$a_k^{(3)}$`是第k个输出单元的激活（输出值）。另外，回想一下，原来的标签(在变量y中)是1,2,…, 10，为了训练神经网络，我们需要将标签重新编码为只包含0或1值的向量，像这样
 <center><img src="https://note.youdao.com/yws/api/personal/file/WEBb82f4eb62d7d113e8823f9c23ff196c5?method=download&shareKey=47a78f78bf517fa1d6a1bd331f49446c" /></center>
