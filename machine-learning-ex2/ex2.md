@@ -80,10 +80,10 @@
 &#160;&#160;&#160;&#160;现在你将实现逻辑回归的代价函数和梯度下降。完成costFunction.m的代码以返回代价值和梯度值。
 
 &#160;&#160;&#160;&#160;回顾一下逻辑回归中的代价函数：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB84500ba0c71573c249f28f0adb426e7b?method=download&shareKey=99a6a4b632a3753e9600a4b74be49bbe" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB84500ba0c71573c249f28f0adb426e7b?method=download&shareKey=99a6a4b632a3753e9600a4b74be49bbe" /></center>
 
 &#160;&#160;&#160;&#160;并且该代价函数的梯度函数是一个和θ长度相同的向量，且第j个元素（for j = 0, 1, . . . , n）的定义如下：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdfb589b5fa098c87bc4fc6e60461687a?method=download&shareKey=c89d344fb6f455aa5bddd24f0b00cffb" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdfb589b5fa098c87bc4fc6e60461687a?method=download&shareKey=c89d344fb6f455aa5bddd24f0b00cffb" /></center>
 
 &#160;&#160;&#160;&#160;注意，虽然这个梯度下降函数看起来与线性回归的梯度下降函数相同，但实际上是不同的，因为线性和逻辑回归的代价函数`$h_θ(x)$`的定义是不同的。
 
@@ -120,7 +120,7 @@
 &#160;&#160;&#160;&#160;一旦fminunc运行结束，ex2.m将使用最优的θ调用costFunction函数，你会看到代价值大约是0.203。
 
 &#160;&#160;&#160;&#160;最终的θ值将用于训练数据的决策边界，执行结果类似于图2。我们还鼓励你查看plotDecisionBoundary中的代码以了解如何使用θ绘制这样的决策边界。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB1ca4253703fa208b87fe28464c0d7e47?method=download&shareKey=831b35ac17e92b91cb283c0c9a84dd7d" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB1ca4253703fa208b87fe28464c0d7e47?method=download&shareKey=831b35ac17e92b91cb283c0c9a84dd7d" /></center>
 <center><h6>Figure 2: Training data with decision boundary</h6></center>
 
 
@@ -145,7 +145,7 @@
 
 ### 2.1 数据可视化
 &#160;&#160;&#160;&#160;与本练习的前几部分类似，plotData用于生成如图3所示的图，其中坐标轴是两次测试分数，使用不同的标记显示合格(y = 1，接受)和不合格(y = 0，拒绝)示例。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB80d075b69719c3c3eed996b8f04d8ea4?method=download&shareKey=3bac0695a559d9b9488e4aa3c76449d4" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB80d075b69719c3c3eed996b8f04d8ea4?method=download&shareKey=3bac0695a559d9b9488e4aa3c76449d4" /></center>
 <center><h6>Figure 3: Plot of training data</h6></center>
 
 &#160;&#160;&#160;&#160;图3显示了我们的数据集不能通过一条直线将其分为正示例和负示例。因此，逻辑回归的直接应用在这个数据集上不会有很好的效果，因为逻辑回归只能找到一个线性的决策边界。
@@ -154,7 +154,7 @@
 ### 2.2 特征映射
 
 &#160;&#160;&#160;&#160;更好地拟合数据的一种方法是从每个数据点创建更多的特性。在提供的函数mapFeature.m，我们将把特征映射到x1和x2的所有多项式项直到特征的6次方。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf6311031791f74a6298e29a329e12589?method=download&shareKey=a713af1dfe8b7a8eac9b1617a712a4b1" width="40%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf6311031791f74a6298e29a329e12589?method=download&shareKey=a713af1dfe8b7a8eac9b1617a712a4b1" /></center>
 
 &#160;&#160;&#160;&#160;这个映射的结果是，我们的两个特征向量(两个QA测试的分数)被转换成一个28维的向量。在这个高维特征向量上训练逻辑回归分类器将具有更复杂的决策边界，并且在二维图中呈现非线性。虽然特征映射允许我们构建一个更具表现力的分类器，但它也更容易过度拟合。在练习的下一部分中，你将实现正则化逻辑回归来拟合数据，并亲自查看正则化如何帮助解决过拟合问题。
 
@@ -163,11 +163,11 @@
 &#160;&#160;&#160;&#160;现在你将编写代码来计算正则化逻辑回归的代价函数和梯度。请完成costFunctionReg.m中的代码并返回代价值和梯度。
 
 &#160;&#160;&#160;&#160;回顾一下正则化逻辑回归的代价函数是：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB90b89c606237e29bfb018ccb4e259288?method=download&shareKey=53fd5765495b2cbc303d61e4de22b57b" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB90b89c606237e29bfb018ccb4e259288?method=download&shareKey=53fd5765495b2cbc303d61e4de22b57b" /></center>
 
 &#160;&#160;&#160;&#160;请注意,你不能正则化参数θ0。在Octave/MATLAB中，回想一下，索引从1开始，因此，你不应该在代码中正则化θ(1)参数(对应于θ0)。代价函数的梯度是一个向量，其中第j个元素的定义如下:
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9775019e1c50a4d75a3f60afb32498a9?method=download&shareKey=5be6ee8123534f0ed3807b75211ff0ec" width="70%" /></center>
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf6ef1c1c9259c361d9d3bf1279c73608?method=download&shareKey=fbdb9ff9bc77455232b944b355b2c542" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9775019e1c50a4d75a3f60afb32498a9?method=download&shareKey=5be6ee8123534f0ed3807b75211ff0ec" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf6ef1c1c9259c361d9d3bf1279c73608?method=download&shareKey=fbdb9ff9bc77455232b944b355b2c542" /></center>
 
 &#160;&#160;&#160;&#160;当你完成后，ex2_reg.m会用θ的初始值（初始值全为0）调用costFunctionReg函数，你应该会看到代价值大约是0.693。
 
@@ -181,7 +181,7 @@
 &#160;&#160;&#160;&#160;为了帮你可视化通过此分类器学习到的模型，我们已经提供了可以绘制非线性决策边界的函数plotDecisionBoundary.m以区分积极和消极样本。在plotDecisionBoundary.m中，我们通过计算分类器在等间距网格上的预测来绘制非线性决策边界，然后绘制预测从y = 0到y = 1变化的等高线图。
 
 &#160;&#160;&#160;&#160;在学习到参数θ后，下一步就是在ex_reg.m中绘制如图4所示的决策边界：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf1fb168679e14ddd383e29872c928c03?method=download&shareKey=e7e5ab8b9cc85a57150854a5a1907356" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf1fb168679e14ddd383e29872c928c03?method=download&shareKey=e7e5ab8b9cc85a57150854a5a1907356" /></center>
 <center><h6>Figure 4: Training data with decision boundary (λ = 1)</h6></center>
 
 
@@ -193,10 +193,10 @@
 &#160;&#160;&#160;&#160;λ较大时，你应该看到一个图显示了一个简单的决定边界仍然把正样本和负样本分的相当好。然而，如果λ值太高，你就不会得到一个不错的选择，决定边界不会很好地跟踪数据，因此欠拟合(图6)。
 
 &#160;&#160;&#160;&#160;你不需要为这些可选的(未评分的)练习提交任何解决方案。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9685ddf3d1484db16d344d01ecd8aeff?method=download&shareKey=7242e30d55fe9459f1379491f942a8aa" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9685ddf3d1484db16d344d01ecd8aeff?method=download&shareKey=7242e30d55fe9459f1379491f942a8aa" /></center>
 <center><h6>Figure 5: No regularization (Overfitting) (λ = 0)</h6></center>
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBaddbf7f9645c19d8b9b4bad138142e04?method=download&shareKey=349b0b954dbe2ff28704f4ea0570b494" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBaddbf7f9645c19d8b9b4bad138142e04?method=download&shareKey=349b0b954dbe2ff28704f4ea0570b494" /></center>
 <center><h6>Figure 6: Too much regularization (Underfitting) (λ = 100)</h6></center>
 
 ## 提交和评分
