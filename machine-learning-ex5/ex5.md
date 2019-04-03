@@ -48,12 +48,12 @@
 > * 用于评估性能的测试集。这些是你的模型在训练期间不知道的“不可见”样本：Xtest、ytest
 
 &#160;&#160;&#160;&#160;然后ex5.m将绘制训练集（图1）。在接下来的部分中，你将实现线性回归，并使用它将直线拟合到数据中，并绘制学习曲线。在此之后，你将实现多项式回归，以便更好地匹配数据。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBae2d0f68169881a28fe435e3a662f1be?method=download&shareKey=fe253e17f5106ab2d7e50709e299a7ad" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBae2d0f68169881a28fe435e3a662f1be?method=download&shareKey=fe253e17f5106ab2d7e50709e299a7ad" /></center>
 <center><h6>Figure 1: Data</h6></center>
 
 ### 1.2 正则化线性回归代价函数
 &#160;&#160;&#160;&#160;回顾一下，正则化线性回归代价函数如下：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9dfb6c729c9b92038a1c7383eeefac36?method=download&shareKey=4d22d9ed3a7518b18d92bdf5a24d9b16" width="60%"/></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9dfb6c729c9b92038a1c7383eeefac36?method=download&shareKey=4d22d9ed3a7518b18d92bdf5a24d9b16" /></center>
 
 &#160;&#160;&#160;&#160;其中λ是一个正则化参数，它控制正则化程度（因此，有助于防止过度拟合）。正则化项对总成本J进行了惩罚。随着模型参数`$θ_j$`的大小增加，惩罚也增加。 请注意，你不应该将`$θ_0$`项正则化。 （在Octave/MATLAB中，`$θ_0$`项表示为theta(1)，因为Octave/MATLAB中的索引从1开始）。
 
