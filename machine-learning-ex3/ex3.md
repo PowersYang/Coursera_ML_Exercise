@@ -1,4 +1,5 @@
 # 程序设计练习3：多类分类和神经网络
+
 ## 介绍
 &#160;&#160;&#160;&#160;在这个练习中，你将实现一对多逻辑回归和神经网络来识别手写数字。在开始编程之前，我们强烈建议观看视频课程并完成相关主题问题的复习。
 
@@ -55,7 +56,7 @@
 &#160;&#160;&#160;&#160;你将从可视化训练集的一个子集开始。在ex3.m的Part 1中，代码随机从X中选择100行并将其传递给函数displayData。该函数将每一行映射到20px * 20px的灰度图像，并将图像一起显示。我们提供了displayData函数，同时也鼓励你观察该函数是如何工作的。
 运行代码之后，你应该会看到一张图如图1所示：
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9e0c3338d4d8ea0a945c382c9d872a74?method=download&shareKey=e8cdec3fcfb45e912f85867aaf7876d7" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9e0c3338d4d8ea0a945c382c9d872a74?method=download&shareKey=e8cdec3fcfb45e912f85867aaf7876d7" /></center>
 <center><h6>Figure 1: Examples from the dataset</h6></center>
 
 ### 1.3 向量化逻辑回归
