@@ -111,7 +111,7 @@ submit.m - 将你的答案发送到我们服务器的提交脚本
 要了解plot命令的更多信息，你可以在Octave/MATLAB命令提示符中键入help plot，或者在线搜索绘图文档。
 (为了将标记改为红色的“x”，我们在plot命令中使用了选项“rx”);
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB461db5dd63fdd146e8b8a79d814e9f74?method=download&shareKey=51aa011fd75b26282d6d39cc61266093" height="70%" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB461db5dd63fdd146e8b8a79d814e9f74?method=download&shareKey=51aa011fd75b26282d6d39cc61266093" /></center>
 <center><h6>Figure 1: Scatter plot of training data</h6></center>
 
 ### 2.2 梯度下降
@@ -208,7 +208,7 @@ submit.m - 将你的答案发送到我们服务器的提交脚本
 
 &#160;&#160;&#160;&#160;执行上面的代码后，你将得到一个J(θ)值的二维数组。然后脚本ex1.m将使用这些值使用surf和contour命令生成J(θ)的曲面图和等高线图。这些图应该类似于图3：
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB5cacd2afc90e3070b02aa84cbbfbab4f?method=download&shareKey=16c10db302524ca5b7673139e4f2de9d" width="90%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB5cacd2afc90e3070b02aa84cbbfbab4f?method=download&shareKey=16c10db302524ca5b7673139e4f2de9d" /></center>
 <center><h6>Figure 3: Cost function J(θ)</h6></center>
 
 &#160;&#160;&#160;&#160;这些图的目的是向你展示J(θ)如何随着θ0和θ1变化。 代价函数J(θ)是碗状的并且具有全局最小值。（这在等高线图中比在3D表面图中更容易看到）。该最小值是`$θ_0$`和`$θ_1$`的最佳点，并且梯度下降的每一步都更接近该点。
@@ -257,7 +257,7 @@ submit.m - 将你的答案发送到我们服务器的提交脚本
 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
 
-> **注意**：在多元情况下，代价函数也可以写成如下矢量形式，矢量化的版本在使用像Octave/MATLAB这样的数字计算工具时非常有效。<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa1c65b5848d9159cf219ff590da66038?method=download&shareKey=436a604d26feee2ab306f39e037e950a" width="90%" /></center>
+> **注意**：在多元情况下，代价函数也可以写成如下矢量形式，矢量化的版本在使用像Octave/MATLAB这样的数字计算工具时非常有效。<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa1c65b5848d9159cf219ff590da66038?method=download&shareKey=436a604d26feee2ab306f39e037e950a" /></center>
 > 如果你是矩阵运算的专家，你可以证明这两种形式是等价的。
 
 #### 3.2.1 可选练习：选择学习率
@@ -269,7 +269,7 @@ submit.m - 将你的答案发送到我们服务器的提交脚本
 &#160;&#160;&#160;&#160;如果你的学习率选在合适的范围内，那么你的图应该如图4所示。如果你的图和图4的差别较大，尤其是J(θ)在增加甚至看起来很离谱，你应该调整学习率再试一次。我们建议在对数刻度上尝试学习率α的值，步长约为前一个值的3倍（即0.3,0.1,0.03,0.01等）。
 如果要查看曲线的整体趋势，你可能还需要调整正在运行的迭代次数。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB2f3807af9771819437ca6b5d48e912a2?method=download&shareKey=0e9f3e01d74622b0b7181301bd4fa15f" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB2f3807af9771819437ca6b5d48e912a2?method=download&shareKey=0e9f3e01d74622b0b7181301bd4fa15f" /></center>
 <center><h6>Figure 4: Convergence of gradient descent with an appropriate learning rate</h6></center>
 
 > **注意**：如果你的学习速度太大，J(θ)可能会发散并“爆炸”，从而导致数值太大以至于计算机无法计算。这种情况下，Octave/MATLAB会返回NaN。NaN代表“非数字”，通常由包括-∞和+∞在内的的未定义操作引起。
