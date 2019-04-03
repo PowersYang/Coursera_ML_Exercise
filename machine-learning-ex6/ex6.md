@@ -71,14 +71,14 @@ submit.m - 提交你的作业至我们的服务器
 &#160;&#160;&#160;&#160;ex6.m的下一部分将使用我们已经给出的代码svmTrain.m运行SVM训练（C = 1）。
 当C = 1时，你应该发现SVM将决策边界置于两个数据集之间的间隙中，并对最左侧的数据点进行错误分类（图2）。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBadf7d009fa7b128473fe868a54651292?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBadf7d009fa7b128473fe868a54651292?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 2: SVM Decision Boundary with C = 1 (Example Dataset 1)</h6></center>
 
 > **实现注意**：大多数SVM软件包（包括svmTrain.m）会自动为你添加额外的特征`$x_0 = 1$`，并自动负责学习截距项`$θ_0$`。 因此，在将训练数据传递给SVM软件时，无需自己添加此额外特征`$x_0 = 1$`。 特别是，在Octave / MATLAB中，你的代码应该使用训练样例`$x∈R^n$`（而不是`$x∈R^{n+1}$`）; 例如，在第一个示例中，数据集`$x∈R^2$`。
 
 &#160;&#160;&#160;&#160;你的任务是在这个数据集中尝试不同的C值。具体来说，你应该将脚本中的C值更改为C = 100并再次运行SVM训练。当C = 100时，你应该会发现SVM现在正确地分类了每个示例，但是它的决策边界似乎不是很好地拟合数据(图3)。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB4f9b6c4c091a42a03a049e27c1e9c451?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB4f9b6c4c091a42a03a049e27c1e9c451?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 3: SVM Decision Boundary with C = 100 (Example Dataset 1)
 </h6></center>
 
