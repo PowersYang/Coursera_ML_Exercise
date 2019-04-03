@@ -77,7 +77,7 @@
 &#160;&#160;&#160;&#160;在这部分中，我们设置正则化参数λ为0。因为我们目前线性回归的实现是尝试拟合一个2维的θ，正则化对于如此低维度的θ将不会非常有用。在练习的后面部分，你将使用带正则化的多项式回归。
 
 &#160;&#160;&#160;&#160;最后，ex5.m脚本应该绘制最拟合的直线，结果如图2所示。最佳拟合线告诉我们该模型不是很适合数据集，因为数据具有非线性模式。 虽然如图所示可视化最佳拟合是调试学习算法的一种可能方法，但是可视化数据和模型并不总是那么容易。 在下一节中，你将实现一个函数来生成学习曲线，这些曲线可以帮助你调试学习算法，即使数据不容易可视化。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB3e7a3b54ea0d2487fb79767fcb32b600?method=download&shareKey=e158ca9070e8f922ebba8dcae8a1a4d4" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB3e7a3b54ea0d2487fb79767fcb32b600?method=download&shareKey=e158ca9070e8f922ebba8dcae8a1a4d4"  /></center>
 <center><h6>Figure 2: Linear Fit</h6></center>
 
 
@@ -97,7 +97,7 @@
 &#160;&#160;&#160;&#160;特别要注意的是，训练误差不包括正则化项。 计算训练误差的一种方法是使用现有的成本函数，并仅在使用它来计算训练误差和交叉验证误差时将λ设置为0。 在计算训练集误差时，请确保在训练子集上计算它（即X(1：n,:)和y(1:n)）（而不是整个训练集）。 但是，对于交叉验证错误，你应该在整个交叉验证集上计算它。 你应该将计算出的错误存储在向量error_train和error_val中。
 
 &#160;&#160;&#160;&#160;当你完成后，ex5.m将打印学习曲线并生成类似于图3的图。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf5bd61518df691ccc749cdd5917ee19e?method=download&shareKey=06e8e005d5e4722c972803a7cf827b64" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf5bd61518df691ccc749cdd5917ee19e?method=download&shareKey=06e8e005d5e4722c972803a7cf827b64"  /></center>
 <center><h6>Figure 3: Linear regression learning curve</h6></center>
 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==你现在应该提交答案==*
@@ -129,11 +129,11 @@
 
 &#160;&#160;&#160;&#160;在学习参数θ之后，你应该看到为λ= 0的多项式回归生成的两个图（图4，5）。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa79c2d8348c68e8f8ad318b4ab3e518d?method=download&shareKey=d4ab9dd98c7001bff86ce72256d266bc" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa79c2d8348c68e8f8ad318b4ab3e518d?method=download&shareKey=d4ab9dd98c7001bff86ce72256d266bc"  /></center>
 <center><h6>Figure 4: Polynomial fit, λ=0</h6></center>
 
 
-<center><img src=https://note.youdao.com/yws/api/personal/file/WEB799f145646cb0a5fc2912a4ad18d8bf9?method=download&shareKey=2819c7f592a337541e8bd3de394e0c92" width="80%" /></center>
+<center><img src=https://note.youdao.com/yws/api/personal/file/WEB799f145646cb0a5fc2912a4ad18d8bf9?method=download&shareKey=2819c7f592a337541e8bd3de394e0c92"  /></center>
 <center><h6>Figure 5: Polynomial learning curve, λ = 0</h6></center>
 
 &#160;&#160;&#160;&#160;从图4中，你应该看到多项式拟合能够很好地跟踪数据点—因此，获得了较低的训练误差。然而，多项式拟合是非常复杂的，甚至在极端情况下下降。这说明多项式回归模型对训练数据拟合过度，不能很好地推广。
@@ -151,15 +151,15 @@
 
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;*==可选练习不需要提交作业==*
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa72cb377535bece3fc6efe4bc87cc59a?method=download&shareKey=29f5255fa2bc04d87c4271900da4a663" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa72cb377535bece3fc6efe4bc87cc59a?method=download&shareKey=29f5255fa2bc04d87c4271900da4a663"  /></center>
 <center><h6>Figure 6: Polynomial fit, λ = 1</h6></center>
 
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBaa107571c3e126004b110790bbf81f8b?method=download&shareKey=2495bb60183a11601e932df3601004f1" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBaa107571c3e126004b110790bbf81f8b?method=download&shareKey=2495bb60183a11601e932df3601004f1"  /></center>
 <center><h6>Figure 7: Polynomial learning curve, λ = 1</h6></center>
 
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB60e4ceff0781f0ba2fa875e3355c23b4?method=download&shareKey=c1ca8c844a7ff0dcfd7d605f6d30e952" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB60e4ceff0781f0ba2fa875e3355c23b4?method=download&shareKey=c1ca8c844a7ff0dcfd7d605f6d30e952"  /></center>
 <center><h6>Figure 8: Polynomial fit, λ = 100</h6></center>
 
 
@@ -170,7 +170,7 @@
 
 &#160;&#160;&#160;&#160;你的任务是完成validationCurve.m中的代码。 具体来说，你应该使用trainLinearReg函数来使用不同的λ值训练模型，并计算训练误差和交叉验证误差。 你应该在以下范围内尝试λ：{0,0.001,0.003,0.01,0.03,0.1,0.3,1,3,10}。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf9a21ffce2b273f81dac3fc59aacfd6e?method=download&shareKey=385700a875d82d349467c22b0dbdbe57" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf9a21ffce2b273f81dac3fc59aacfd6e?method=download&shareKey=385700a875d82d349467c22b0dbdbe57"  /></center>
 <center><h6>Figure 9: Selecting λ using a cross validation set</h6></center>
 
 &#160;&#160;&#160;&#160;完成代码后，ex5.m的下一部分将运行你可以绘制交叉验证曲线误差的函数。你可以选择要使用的λ参数。 你应该看到类似于图9的图。在此图中，我们可以看到λ的最佳值约为3。由于数据集的训练和验证分割中的随机性，交叉验证误差有时可能低于训练误差。
