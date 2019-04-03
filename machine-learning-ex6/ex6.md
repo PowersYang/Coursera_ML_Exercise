@@ -63,7 +63,7 @@ submit.m - 提交你的作业至我们的服务器
 ### 1.1 样本数据集1
 &#160;&#160;&#160;&#160;我们将从一个2D示例数据集开始，该数据集可以由线性边界分隔。 脚本ex6.m将绘制训练数据（图1）。 在该数据集中，正例（用+表示）和负例（用o表示）的位置暗示了由间隙表示的自然分离。 但是，请注意在最左边有一个异常值正例+大约（0.1,4.1）。 作为本练习的一部分，你还将了解此异常值如何影响SVM决策边界。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB49bd742d8b49bb6587a8632ed164c099?method=download&shareKey=10fc7067262d2b19947e9236fc9d2e76" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB49bd742d8b49bb6587a8632ed164c099?method=download&shareKey=10fc7067262d2b19947e9236fc9d2e76" /></center>
 <center><h6>Figure 1: Example Dataset 1</h6></center>
 
 &#160;&#160;&#160;&#160;在练习的这一部分中，你将尝试使用SVMs中不同的C参数值。非正式地说，C参数是一个正值，它控制了对错误分类的训练示例的惩罚。一个大的C参数告诉SVM尝试正确地对所有示例进行分类。 C起着类似于`$\frac{1}{λ}$`的作用，其中λ是我们之前用于逻辑回归的正则化参数。
@@ -100,20 +100,20 @@ submit.m - 提交你的作业至我们的服务器
 #### 1.2.2 样本数据集2
 &#160;&#160;&#160;&#160;ex6.m的下一部分将加载并绘制数据集2（图4）。 从图中可以看出，没有线性决策边界来区分此数据集的正负样本。 但是，通过将SVM与高斯核一起使用，你将能够学习非线性决策边界，该边界在数据及上会表现地很好。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa2a10441c6cb30f282d813ca18db7376?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBa2a10441c6cb30f282d813ca18db7376?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 4: Example Dataset 2</h6></center>
 
 &#160;&#160;&#160;&#160;如果你正确地实现了高斯核函数，ex6.m将在此数据集中使用高斯核训练SVM。
 
 &#160;&#160;&#160;&#160;图5为高斯核支持向量机的决策边界。该决策边界能够正确地分离出大部分正、负样本，并能很好地跟踪数据集的轮廓。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBd421f0ecb789444fc201ce5018b15e71?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBd421f0ecb789444fc201ce5018b15e71?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 5: SVM (Gaussian Kernel) Decision Boundary (Example Dataset 2)</h6></center>
 
 #### 1.2.3 样本数据集3
 &#160;&#160;&#160;&#160;在本练习的这一部分中，你将获得有关如何使用具有高斯内核的SVM的更多实用技巧。ex6.m的下一部分将加载并显示第三个数据集（图6）。 你将使用带有此数据集的高斯内核的SVM。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB18d7e5ef1bb13723b649e142fa62c427?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB18d7e5ef1bb13723b649e142fa62c427?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 6: Example Dataset 3</h6></center>
 
 &#160;&#160;&#160;&#160;在提供的数据集ex6data3.mat中，你将获得变量X，y，Xval，yval。ex6.m中提供的代码使用从dataset3Params.m加载的参数，使用训练集（X，y）训练SVM分类器。
@@ -122,7 +122,7 @@ submit.m - 提交你的作业至我们的服务器
 
 &#160;&#160;&#160;&#160;确定要使用的最佳C和σ参数后，应修改dataset3Params.m中的代码，填写找到的最佳参数。 对于我们的最佳参数，SVM返回了如图7所示的决策边界。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB4dd71753981af9993a6224d66594fc90?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB4dd71753981af9993a6224d66594fc90?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 7: SVM (Gaussian Kernel) Decision Boundary (Example Dataset 3)</h6></center>
 
 > **实现注意**：在实现交叉验证以选择要使用的最佳C和σ参数时，需要评估交叉验证集上的误差。回想一下，对于分类问题，误差被定义为错误分类的交叉验证样本比例。在Octave / MATLAB中，你可以使用mean(double(predictions ~= yval))计算此误差，其中predictions是包含来自SVM的所有预测的向量，yval是来自交叉验证集的真实标签。你可以使用svmPredict函数生成交叉验证集的预测。
@@ -162,12 +162,12 @@ submit.m - 提交你的作业至我们的服务器
 
 &#160;&#160;&#160;&#160;对于本练习，我们仅选择最常出现的单词作为我们考虑的单词集（词汇表）。由于训练集中很少出现的单词仅在几封电子邮件中，因此可能会导致模型过度训练我们的训练集。完整的词汇表列在文件vocab.txt中，如图10所示。我们的词汇表是通过选择在垃圾邮件语料库中至少出现100次的所有单词来选择的，从而得到1899个单词的列表。 在实践中，经常使用具有大约10,000到50,000个单词的词汇表。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBc99b67e5a992cc188e499e45dd5b2ee2?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="20%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBc99b67e5a992cc188e499e45dd5b2ee2?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 10: Vocabulary List</h6></center>
 
 &#160;&#160;&#160;&#160;给定词汇表，我们现在可以将预处理的电子邮件（例如，图9）中的每个单词映射到包含词汇表中单词的索引的单词索引列表。 图11显示了示例电子邮件的映射。具体而言，在示例电子邮件中，单词“everyone”首先被标准化为“anyon”，然后映射到词汇表列表中的索引86。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBab50cad52ada84206c62afc65422a73a?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" width="30%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBab50cad52ada84206c62afc65422a73a?method=download&shareKey=c85351059a7cd3ef3c488d91f6a3f4bf" /></center>
 <center><h6>Figure 11: Word Indices for Sample Email</h6></center>
 
 &#160;&#160;&#160;&#160;你现在的任务是完成processEmail.m中的代码以执行此映射。在代码中，你将获得一个字符串str，它是已处理电子邮件中的单个单词。你应该在词汇表vocabList中查找单词，并查找词汇表中是否存在该单词。如果单词存在，则应将单词的索引添加到单词indices变量中。 如果单词不存在，因此不在词汇表中，则可以跳过单词。
