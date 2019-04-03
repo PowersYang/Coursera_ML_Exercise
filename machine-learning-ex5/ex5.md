@@ -64,7 +64,7 @@
 
 ### 1.3 正则化线性回归梯度
 &#160;&#160;&#160;&#160;相应地，`$θ_j$`的正则化线性回归成本的偏导数定义为
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB20adab4945f07159c894b26dcee69480?method=download&shareKey=a5560180022bd265f211a5ed17f937b3" width="70%"></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB20adab4945f07159c894b26dcee69480?method=download&shareKey=a5560180022bd265f211a5ed17f937b3" /></center>
 
 &#160;&#160;&#160;&#160;在linearRegCostFunction.m中添加代码来计算梯度，并在grad变量中返回它。当你完成后，ex5.m将会使用初始化的theta（[1; 1]）调用你的梯度函数。你应该期望看到[-15.30; 598.250]的梯度。
 
@@ -92,7 +92,7 @@
 &#160;&#160;&#160;&#160;为绘制学习曲线，我们需要不同训练集大小的训练和交叉验证集误差。 要获得不同的训练集大小，你应该使用原始训练集X的不同子集。具体来说，对于训练集大小为i，你应该使用前面的第i个示例（即X（1：i,:)和y(1：i)）。
 
 &#160;&#160;&#160;&#160;你可以使用trainLinearReg函数找到θ参数。注意，lambda是作为参数传递给learningCurve函数的。在学习到θ参数之后，你应该在训练集和交叉验证集上计算误差。回顾一下对于一个数据集的训练误差：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB13d1330a8a71d9a795d976fa1cf9a158?method=download&shareKey=15e2489279961f3549ee8188365c7857" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB13d1330a8a71d9a795d976fa1cf9a158?method=download&shareKey=15e2489279961f3549ee8188365c7857" /></center>
 
 &#160;&#160;&#160;&#160;特别要注意的是，训练误差不包括正则化项。 计算训练误差的一种方法是使用现有的成本函数，并仅在使用它来计算训练误差和交叉验证误差时将λ设置为0。 在计算训练集误差时，请确保在训练子集上计算它（即X(1：n,:)和y(1:n)）（而不是整个训练集）。 但是，对于交叉验证错误，你应该在整个交叉验证集上计算它。 你应该将计算出的错误存储在向量error_train和error_val中。
 
