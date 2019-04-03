@@ -133,7 +133,7 @@
 <center><h6>Figure 4: Polynomial fit, λ=0</h6></center>
 
 
-<center><img src=https://note.youdao.com/yws/api/personal/file/WEB799f145646cb0a5fc2912a4ad18d8bf9?method=download&shareKey=2819c7f592a337541e8bd3de394e0c92"  /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB799f145646cb0a5fc2912a4ad18d8bf9?method=download&shareKey=2819c7f592a337541e8bd3de394e0c92"  /></center>
 <center><h6>Figure 5: Polynomial learning curve, λ = 0</h6></center>
 
 &#160;&#160;&#160;&#160;从图4中，你应该看到多项式拟合能够很好地跟踪数据点—因此，获得了较低的训练误差。然而，多项式拟合是非常复杂的，甚至在极端情况下下降。这说明多项式回归模型对训练数据拟合过度，不能很好地推广。
