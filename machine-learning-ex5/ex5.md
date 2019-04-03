@@ -193,7 +193,7 @@
 
 &#160;&#160;&#160;&#160;对于此可选（不评分）练习，你应该实施上述策略来计算学习曲线。 作为参考，图10示出了我们针对λ= 0.01的多项式回归获得的学习曲线。 由于随机选择了样本，你的数字可能略有不同。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB2a8cd9d81aecb91692efa5155c4ad848?method=download&shareKey=3c16b4e77129a79f4ebe57a11245d749" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB2a8cd9d81aecb91692efa5155c4ad848?method=download&shareKey=3c16b4e77129a79f4ebe57a11245d749" /></center>
 <center><h6>Figure 10: Optional (ungraded) exercise: Learning curve with randomly
 selected examples</h6></center>
 
