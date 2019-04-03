@@ -45,7 +45,7 @@
 &#160;&#160;&#160;&#160;如果可能的话，在实现任何学习算法之前可视化数据总是好的。在ex2.m的第一部分，该代码会加载数据并调用函数plotData将其显示在二维图中。
 
 &#160;&#160;&#160;&#160;现在你将完成plotData中的代码，最终结果如图1所示，其中两个轴代表两次考试成绩，正负样本用不同标记表示。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB807bb3ba0a9c9e798f7f01b64e76bd01?method=download&shareKey=d61f9296b8eab981df790c22d6eb213b" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB807bb3ba0a9c9e798f7f01b64e76bd01?method=download&shareKey=d61f9296b8eab981df790c22d6eb213b" /></center>
 <center><h6>Figure 1: Scatter plot of training data</h6></center>
 
 &#160;&#160;&#160;&#160;为了让你更熟悉绘图，我们没有实现plotData.m中的代码，所以你可以尝试自己实现它。当然，是否自己实现是可选的，我们在下面给出了我们已经实现的代码，你可以直接复制或者参考。如果你要复制我们的代码，请参阅Octave/MATLAB的说明文档确保你完全理解了每行命令的含义。
@@ -202,6 +202,6 @@
 ## 提交和评分
 &#160;&#160;&#160;&#160;完成作业的各个部分后，请务必使用提交系统将你的作业提交给我们的服务器。以下是对此练习的每个部分进行评分的细则。
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBc816c5a4b03a658f4af4cd05082f2a8d?method=download&shareKey=66f0f5656f8b301cb122c3544f3d43d6" width="80%"/></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBc816c5a4b03a658f4af4cd05082f2a8d?method=download&shareKey=66f0f5656f8b301cb122c3544f3d43d6" /></center>
 
 &#160;&#160;&#160;&#160;你可以多次提交作业，但我们只考虑最高分。
