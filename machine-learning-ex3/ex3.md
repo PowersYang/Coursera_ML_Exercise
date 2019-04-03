@@ -64,21 +64,21 @@
 
 #### 1.3.1 向量化代价函数
 &#160;&#160;&#160;&#160;我们将从编写成本函数的向量化版本开始。回想一下，在非正则化逻辑回归中，成本函数是：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB72f1222ea162d4dcf5da96d84a06728d?method=download&shareKey=a2ebe17dae0454884bc951a1f6f19bf6" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB72f1222ea162d4dcf5da96d84a06728d?method=download&shareKey=a2ebe17dae0454884bc951a1f6f19bf6" /></center>
 
 &#160;&#160;&#160;&#160;为了对每个元素求和，我们必须计算hθ(x(i))，其中：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBbd388371fa613a903899348485e89a80?method=download&shareKey=9d8d1e0234c9cad72f6df3042bd1bb33" width="40%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBbd388371fa613a903899348485e89a80?method=download&shareKey=9d8d1e0234c9cad72f6df3042bd1bb33" /></center>
 是S函数。这样一来我们就可以用矩阵乘法快速计算所有样本。其中X和他和θ的定义为：
 
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBed18c69bc6f50581aa18d44d4a722b05?method=download&shareKey=ba9dba971b0f03976aa91c7e40088d13" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBed18c69bc6f50581aa18d44d4a722b05?method=download&shareKey=ba9dba971b0f03976aa91c7e40088d13" /></center>
 然后通过计算得到矩阵Xθ，我们有：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9ed339aed239d5698615023dbff6fab3?method=download&shareKey=f7f83c299083530f621040df8279cc59" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB9ed339aed239d5698615023dbff6fab3?method=download&shareKey=f7f83c299083530f621040df8279cc59" /></center>
 在上个等式中，假设a和b都是向量，我们使a.T * b = b.T * a。这样我们就可以在一行代码中计算所有样本i的θ.T*x(i)（i为上标，表示第i个样本）。
 &#160;&#160;&#160;&#160;你的任务就是在lrCostFunction.m中写非正则化代价函数的代码。你的实现应该使用我们上面的策略来计算的θ.T*x(i)。你还应该对代价函数的其余部分使用向量化的方法，一个完全向量化的lrCostFunction.m应该是没有任何循环的。
 
 #### 1.3.2 向量化梯度
 &#160;&#160;&#160;&#160;回想一下（非正则化）逻辑回归成本的梯度是一个向量，其中第j个元素定义为：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB53b55e89044bb70cd7fe9cf6d28f186d?method=download&shareKey=72b6828d07fb4f1bdafc3441dc507970" width="70%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB53b55e89044bb70cd7fe9cf6d28f186d?method=download&shareKey=72b6828d07fb4f1bdafc3441dc507970" /></center>
 
 &#160;&#160;&#160;&#160;为了在数据集上对该操作进行向量化，我们首先明确地为所有θj写出所有偏导数，
 <center><img src="https://note.youdao.com/yws/api/personal/file/WEB1efa7d7beee3100f68265e8d1ae86c38?method=download&shareKey=7b40f5fc43a054c68fa61a510870fdfd" /></center>
@@ -94,7 +94,7 @@
 
 #### 1.3.3 向量化正则化逻辑回归
 &#160;&#160;&#160;&#160;在实现了逻辑回归向量化之后，现在你将向成本函数添加正则化。回想一下，对于正则化逻辑回归，成本函数的定义是
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB6b20003cb9e8df116603b5bc3429e16b?method=download&shareKey=9ec878aea2f88c1c4983d2ceb117e8bd" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB6b20003cb9e8df116603b5bc3429e16b?method=download&shareKey=9ec878aea2f88c1c4983d2ceb117e8bd" /></center>
 
 &#160;&#160;&#160;&#160;注意，你不能正则化偏差项`$θ_0$`。
 
@@ -158,7 +158,7 @@ load('ex3weights.mat');
 % Theta1 has size 25 x 401
 % Theta2 has size 10 x 26
 ```
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdba65583247ba093a8be6c3a07093f6c?method=download&shareKey=2d6cedef95e5129f3c30915cc19c322f" width="60%"/></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBdba65583247ba093a8be6c3a07093f6c?method=download&shareKey=2d6cedef95e5129f3c30915cc19c322f" /></center>
 <center><h6>Figure 2: Neural network model</h6></center>
 
 ### 2.2 前馈传播与预测 
