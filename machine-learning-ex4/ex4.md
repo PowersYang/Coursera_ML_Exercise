@@ -89,7 +89,7 @@ load('ex3weights.mat');
 
 ### 1.4 正则化的代价函数
 &#160;&#160;&#160;&#160;正则化的神经网络的代价函数如下：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf0704daf8c5ec8727b41adcac9d2d5c7?method=download&shareKey=4170b6684354c0486a10452cbc5fe569" width="80%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBf0704daf8c5ec8727b41adcac9d2d5c7?method=download&shareKey=4170b6684354c0486a10452cbc5fe569" /></center>
 
 &#160;&#160;&#160;&#160;假设神经网络有三层——一个输入层，一个隐藏层和一个输出层。但是，你的代码应该适用于任意数量的输入单元、隐藏单元和输出单元。虽然为了清楚起见，我们已明确列出了`$Θ^{(1)}$`和`$Θ^{(2)}$`的上述索引，但请注意，你的代码应使用任何大小的`$Θ^{(1)}$`和`$Θ^{(2)}$`。
 
@@ -107,7 +107,7 @@ load('ex3weights.mat');
 
 ### 2.1 Sigmoid梯度
 &#160;&#160;&#160;&#160;为了帮你开始这部分练习，你第一个需要实现的是sigmoid梯度函数。sigmoid函数的梯度计算公式如下：
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB5bfdc23264bd085bdd435857a15043b6?method=download&shareKey=01b75a7f6e48b568856007df9d3b9441" width="60%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB5bfdc23264bd085bdd435857a15043b6?method=download&shareKey=01b75a7f6e48b568856007df9d3b9441" /></center>
 
 &#160;&#160;&#160;&#160;当你结束之后，尝试在Octave/matlab命令行中通过调用sigmoidGradient(z)来测试一些值。对于z的比较大的值(包括正值和负值)，梯度应该接近于0。当z=0时，梯度应该正好是0.25。你的代码还应该处理向量和矩阵。对于矩阵，函数应该对每个元素执行sigmoid梯度函数。
 
@@ -146,7 +146,7 @@ load('ex3weights.mat');
 你可能会发现逻辑数组对此任务有帮助（在之前的编程练习中进行了解释）。
 
 &#160;&#160;&#160;&#160;3、对于隐藏层l=2，设置
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB6c3fd02b680351e1a4029c72919c2174?method=download&shareKey=c2179ff2394a68a87484f4fe97689939" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB6c3fd02b680351e1a4029c72919c2174?method=download&shareKey=c2179ff2394a68a87484f4fe97689939" /></center>
 
 &#160;&#160;&#160;&#160;4、使用下面这个式子从这个例子中积累梯度。注意，你应该跳过或者移除`$δ^{(2)}_0$`。在Octave/MATLAB中，移除`$δ^{(2)}_0$`对应的操作是delta_2 = delta_2(2:end)。
 <center><img src="https://note.youdao.com/yws/api/personal/file/WEBf3779d29386d6d260988a3ced02dffba?method=download&shareKey=6f2304b07767bb1658a0e7ea5770cc4c" /></center>
@@ -182,10 +182,10 @@ load('ex3weights.mat');
 &#160;&#160;&#160;&#160;在你成功地实现了反向传播算法之后，你将向梯度添加正则化。为了解释正则化，在使用反向传播计算梯度之后，可以将其作为附加项添加进来。
 
 &#160;&#160;&#160;&#160;具体地说，在你计算完`$\Delta^{l}_{ij}$`之后使用反向传播，你应该使用
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB3e1555e15859c374147d20d3df50a8c2?method=download&shareKey=69e2c56bbec7e4c02ce22e479439500d" width="60% "/></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB3e1555e15859c374147d20d3df50a8c2?method=download&shareKey=69e2c56bbec7e4c02ce22e479439500d" /></center>
 
 &#160;&#160;&#160;&#160;注意，你不能正则化用于偏差项的`$θ^{(l)}$`的第一项。还有就是，参数θ的i是从1开始索引的，j是从0开始索引的。因此，
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEBb937dd7bf6bf960a970ef1f01aca1c84?method=download&shareKey=4a4c5a731927c1c98e2c5d26bbd485ed" width="50%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEBb937dd7bf6bf960a970ef1f01aca1c84?method=download&shareKey=4a4c5a731927c1c98e2c5d26bbd485ed" /></center>
 
 &#160;&#160;&#160;&#160;令人困惑的是，在Octave/MATLAB中索引是从1开始的（所有的i和j都是），因此Theta1(2,1)实际上对应的是`$θ^{(l)}_{2,0}$`。
 
@@ -206,7 +206,7 @@ load('ex3weights.mat');
 &#160;&#160;&#160;&#160;因此，将隐藏单元捕获的“表示”可视化的一种方法是将这个400维的向量重新塑造成20×20的图像并显示出来。ex4.m的下一步是使用displayData函数，它将向你显示一个包含25个单元的图像(类似于图4)，每个单元对应于网络中的一个隐藏单元。
 
 &#160;&#160;&#160;&#160;在经过训练的网络中，你应该发现隐藏的单元大致对应于在输入中查找笔画和其他模式的检测器。
-<center><img src="https://note.youdao.com/yws/api/personal/file/WEB7850a7b114295f66955c2bb8c5d90d19?method=download&shareKey=f3d78e3a845af0dd13e20c827bb24a5a" width="60%" /></center>
+<center><img src="https://note.youdao.com/yws/api/personal/file/WEB7850a7b114295f66955c2bb8c5d90d19?method=download&shareKey=f3d78e3a845af0dd13e20c827bb24a5a" /></center>
 <center><h6>Figure 4: Visualization of Hidden Units.</h6></center>
 
 
